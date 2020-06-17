@@ -1,0 +1,1 @@
+web: java -jar -Ddw.server.connector.port=$PORT target/optoviva-1.0.0-SNAPSHOT.jar server config.yml

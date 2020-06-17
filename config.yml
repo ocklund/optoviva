@@ -1,4 +1,7 @@
-logging:
-  level: INFO
-  loggers:
-    com.ocklund: DEBUG
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080 # Overridden by Procfile.
