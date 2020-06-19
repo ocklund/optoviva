@@ -1,0 +1,32 @@
+
+getAreaByCategoryScore(location, category, score): Area
+
+getAreaBestMatch(result*): Area
+
+*) result:
+
+{
+	"categories": [{
+		"categoryId": "a",
+		"score": "3",
+		"areaIds": ["aa", "bb"]
+	}, {
+		"categoryId": "b",
+		"score": "2",
+		"areaIds": ["aa", "cc"]
+	}, {
+		"categoryId": "c",
+		"score": "2",
+		"areaIds": ["aa", "cc"]
+	}, {
+		"categoryId": "d",
+		"score": "5",
+		"areaIds": ["aa"]
+	}, {
+		"categoryId": "e",
+		"score": "1",
+		"areaIds": ["cc", "dd", "ee"]
+	}]
+
+}
+

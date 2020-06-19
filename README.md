@@ -10,4 +10,4 @@ How to start the Optoviva application
 Health Check
 ---
 
-To see your applications health enter url `http://localhost:8081/healthcheck`
+To see your applications health enter url `http://localhost:8081/admin/healthcheck`
