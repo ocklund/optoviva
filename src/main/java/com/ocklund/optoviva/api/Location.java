@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Score {
+public class Location {
     private String id;
-    private String areaId;
-    private String categoryId;
-    private String locationId;
-    private Integer score;
+    private String name;
+    private String description;
     private String created;
     private String modified;
     private String modifiedBy;

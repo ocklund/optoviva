@@ -1,11 +1,15 @@
 package com.ocklund.optoviva.api;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     private String id;
-    private String type;
+    private String name;
     private String description;
     private String created;
     private String modified;

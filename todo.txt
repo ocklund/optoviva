@@ -1,32 +1,21 @@
 
-getAreaByCategoryScore(location, category, score): Area
+Flow
+----
 
-getAreaBestMatch(result*): Area
+- Load page
+getLocations() -> Dropdown of locations is displayed
+getCategories() -> Slides for all categories are displayed
 
-*) result:
+- User chooses location
+-> Chosen location is displayed
 
-{
-	"categories": [{
-		"categoryId": "a",
-		"score": "3",
-		"areaIds": ["aa", "bb"]
-	}, {
-		"categoryId": "b",
-		"score": "2",
-		"areaIds": ["aa", "cc"]
-	}, {
-		"categoryId": "c",
-		"score": "2",
-		"areaIds": ["aa", "cc"]
-	}, {
-		"categoryId": "d",
-		"score": "5",
-		"areaIds": ["aa"]
-	}, {
-		"categoryId": "e",
-		"score": "1",
-		"areaIds": ["cc", "dd", "ee"]
-	}]
+- User sets a slide for a category (repeated for each category)
+searchArea() -> Best matching area for category is displayed
+resultArea() -> Best matching area for all categories is displayed
 
-}
+- Optional: User marks checkbox for sharing result with Hyperspace ("Contact me")
+
+- User submits result with own email in order to receive the result by email
+
+
 

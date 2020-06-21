@@ -6,8 +6,11 @@ import com.ocklund.optoviva.db.Storage;
 
 import javax.ws.rs.*;
 
+import java.util.Set;
+
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Path("/category")
 public class CategoryResource {
 
     private final Storage storage;
@@ -17,7 +20,7 @@ public class CategoryResource {
     }
 
     @GET
-    @Path("/category/{id}")
+    @Path("/{id}")
     @Timed
     public Category getCategory(@PathParam("id") String id) {
         if (storage.getCategory(id).isPresent()) {
@@ -26,24 +29,28 @@ public class CategoryResource {
         throw new WebApplicationException(NOT_FOUND);
     }
 
-    @POST
-    @Path("/category")
+    @GET
     @Timed
-    public String createCategory(@PathParam("category") Category category) {
+    public Set<Category> getCategories() {
+        return storage.getCategories();
+    }
+
+    @POST
+    @Timed
+    public Category createCategory(Category category) {
         return storage.storeCategory(category);
     }
 
     @PUT
-    @Path("/category")
     @Timed
-    public void updateCategory(@PathParam("category") Category category) {
+    public void updateCategory(Category category) {
         storage.updateCategory(category);
     }
 
     @DELETE
-    @Path("/category/{id}")
+    @Path("/{id}")
     @Timed
-    public void deleteCategory(@PathParam("id") Category category) {
-        storage.updateCategory(category);
+    public void deleteCategory(@PathParam("id") String id) {
+        storage.deleteCategory(id);
     }
 }

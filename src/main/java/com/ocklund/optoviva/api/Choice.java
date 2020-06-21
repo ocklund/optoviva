@@ -4,16 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Score {
-    private String id;
-    private String areaId;
+public class Choice {
     private String categoryId;
-    private String locationId;
     private Integer score;
-    private String created;
-    private String modified;
-    private String modifiedBy;
+    private List<String> areaIds = new ArrayList<>();
 }

@@ -8,6 +8,7 @@ import javax.ws.rs.*;
 
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Path("/score")
 public class ScoreResource {
 
     private final Storage storage;
@@ -17,8 +18,8 @@ public class ScoreResource {
     }
 
     @GET
-    @Path("/score/{id}")
     @Timed
+    @Path("/{id}}")
     public Score getScore(@PathParam("id") String id) {
         if (storage.getScore(id).isPresent()) {
             return storage.getScore(id).get();
@@ -27,23 +28,21 @@ public class ScoreResource {
     }
 
     @POST
-    @Path("/score")
     @Timed
-    public String createScore(@PathParam("score") Score score) {
+    public String createScore(Score score) {
         return storage.storeScore(score);
     }
 
     @PUT
-    @Path("/score")
     @Timed
-    public void updateScore(@PathParam("score") Score score) {
+    public void updateScore(Score score) {
         storage.updateScore(score);
     }
 
     @DELETE
-    @Path("/score/{id}")
+    @Path("/{id}")
     @Timed
-    public void deleteScore(@PathParam("id") Score score) {
-        storage.updateScore(score);
+    public void deleteScore(@PathParam("id") String id) {
+        storage.deleteScore(id);
     }
 }

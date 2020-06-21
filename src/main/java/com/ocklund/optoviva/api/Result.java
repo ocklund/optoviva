@@ -6,17 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Area {
-    private String id;
-    private String name;
-    private String description;
+public class Result {
+    private String email;
     private String locationId;
-    private String created;
-    private String modified;
-    private String modifiedBy;
+    private List<Choice> choices = new ArrayList<>();
 
     public String toJson() {
         try {
