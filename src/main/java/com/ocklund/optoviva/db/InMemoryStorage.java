@@ -47,6 +47,7 @@ public class InMemoryStorage implements Storage {
         scoreStorage.put("10", new Score("10", "2", "4", "1", 4, timestamp, timestamp, "system"));
         scoreStorage.put("11", new Score("11", "2", "5", "1", 4, timestamp, timestamp, "system"));
         scoreStorage.put("12", new Score("12", "2", "6", "1", 2, timestamp, timestamp, "system"));
+
         log.info(String.format("Location size: %s", locationStorage.size()));
         log.info(String.format("Area size: %s", areaStorage.size()));
         log.info(String.format("Category size: %s", categoryStorage.size()));
@@ -84,7 +85,7 @@ public class InMemoryStorage implements Storage {
     public Optional<Area> getAreaBestMatch(Result result) {
         log.info(String.format("result: %s", result.toJson()));
         List<String> allIds = result.getChoices().stream()
-                .flatMap(choice -> choice.getAreaIds().stream())
+                .map(choice -> String.valueOf(choice.getAreaId()))
                 .collect(Collectors.toList());
         Optional<String> idOptional = mostFrequentId(allIds);
         return idOptional.map(id -> areaStorage.get(id));

@@ -88,7 +88,7 @@ class AreaResourceTest {
                 "   \"choices\": [{" +
                 "       \"categoryId\": \"1\"," +
                 "       \"score\": 1," +
-                "       \"areaIds\": [\"1\", \"2\"]" +
+                "       \"areaId\": 2" +
                 "   }]" +
                 "}";
 

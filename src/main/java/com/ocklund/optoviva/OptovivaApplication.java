@@ -8,6 +8,7 @@ import com.ocklund.optoviva.resources.CategoryResource;
 import com.ocklund.optoviva.resources.LocationResource;
 import com.ocklund.optoviva.resources.ScoreResource;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -24,7 +25,7 @@ public class OptovivaApplication extends Application<OptovivaConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<OptovivaConfiguration> bootstrap) {
-        // TODO: application initialization
+        bootstrap.addBundle(new AssetsBundle("/assets/", "/"));
     }
 
     @Override

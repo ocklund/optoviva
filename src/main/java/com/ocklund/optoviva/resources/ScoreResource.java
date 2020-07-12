@@ -29,7 +29,7 @@ public class ScoreResource {
 
     @POST
     @Timed
-    public String createScore(Score score) {
+    public Score createScore(Score score) {
         return storage.storeScore(score);
     }
 

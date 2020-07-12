@@ -5,9 +5,9 @@ import com.ocklund.optoviva.api.Category;
 import com.ocklund.optoviva.db.Storage;
 
 import javax.ws.rs.*;
-
 import java.util.Set;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Path("/category")
@@ -21,6 +21,7 @@ public class CategoryResource {
 
     @GET
     @Path("/{id}")
+    @Produces(APPLICATION_JSON)
     @Timed
     public Category getCategory(@PathParam("id") String id) {
         if (storage.getCategory(id).isPresent()) {
@@ -30,18 +31,22 @@ public class CategoryResource {
     }
 
     @GET
+    @Produces(APPLICATION_JSON)
     @Timed
     public Set<Category> getCategories() {
         return storage.getCategories();
     }
 
     @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     @Timed
     public Category createCategory(Category category) {
         return storage.storeCategory(category);
     }
 
     @PUT
+    @Consumes(APPLICATION_JSON)
     @Timed
     public void updateCategory(Category category) {
         storage.updateCategory(category);
