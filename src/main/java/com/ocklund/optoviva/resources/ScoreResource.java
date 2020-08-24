@@ -3,11 +3,16 @@ package com.ocklund.optoviva.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.ocklund.optoviva.api.Score;
 import com.ocklund.optoviva.db.Storage;
+import lombok.extern.java.Log;
 
 import javax.ws.rs.*;
+import java.util.Optional;
 
+import static java.lang.String.format;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Log
 @Path("/score")
 public class ScoreResource {
 
@@ -18,31 +23,40 @@ public class ScoreResource {
     }
 
     @GET
+    @Produces(APPLICATION_JSON)
     @Timed
-    @Path("/{id}}")
-    public Score getScore(@PathParam("id") String id) {
-        if (storage.getScore(id).isPresent()) {
-            return storage.getScore(id).get();
+    @Path("/{id}")
+    public Score getScore(@PathParam("id") Long id) {
+        log.info(format("id: %s", id));
+        Optional<Score> score = storage.getScore(id);
+        if (score.isPresent()) {
+            return score.get();
         }
         throw new WebApplicationException(NOT_FOUND);
     }
 
     @POST
+    @Consumes(APPLICATION_JSON)
+    @Produces(APPLICATION_JSON)
     @Timed
-    public Score createScore(Score score) {
+    public Score storeScore(Score score) {
+        log.info(format("score: %s", score.toJson()));
         return storage.storeScore(score);
     }
 
     @PUT
+    @Consumes(APPLICATION_JSON)
     @Timed
     public void updateScore(Score score) {
+        log.info(format("score: %s", score.toJson()));
         storage.updateScore(score);
     }
 
     @DELETE
     @Path("/{id}")
     @Timed
-    public void deleteScore(@PathParam("id") String id) {
+    public void deleteScore(@PathParam("id") Long id) {
+        log.info(format("id: %s", id));
         storage.deleteScore(id);
     }
 }

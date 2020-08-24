@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Result {
     private String email;
-    private String locationId;
+    private Long locationId;
     private List<Choice> choices = new ArrayList<>();
 
     public String toJson() {

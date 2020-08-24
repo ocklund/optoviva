@@ -67,7 +67,7 @@
               return r
             }, {max: 0})
 
-            var bestMatch = '<p>Best match:</p>';
+            var bestMatch = '<p>&nbsp;</p>';
             if (names.length > 0) {
               bestMatch = '<p>Best match: <strong>' + mostFrequent(names).join(', ') + '</strong></p>';
             }
@@ -130,12 +130,10 @@
             })
           }
           getCategories();
-
         });
     </script>
 </head>
 <body>
-
   <h1 class="center">Optoviva</h1>
   <div id="location-choice" class="container">
     <div class="row">
@@ -153,12 +151,8 @@
     <div class="column center"><p>MIN &laquo; Drag sliders according to your preferences &raquo; MAX</p></div>
   </div>
   <div class="row">
-    <div class="column column-40"></div>
-    <div id="best-match" class="column column-20 center"><p>Best match:</p></div>
-    <div class="column column-40"></div>
+    <div id="best-match" class="column center"></div>
   </div>
-</div>
-<div id="categories" class="container"></div>
-
+  <div id="categories" class="container"></div>
 </body>
 </html>

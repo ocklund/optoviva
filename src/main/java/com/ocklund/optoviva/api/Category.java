@@ -1,25 +1,31 @@
 package com.ocklund.optoviva.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import static java.lang.Integer.compare;
-import static java.lang.Integer.parseInt;
+import static java.lang.Long.compare;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category implements Comparable<Category> {
-    private String id;
+    private Long id;
     private String name;
     private String description;
-    private String created;
-    private String modified;
-    private String modifiedBy;
 
     @Override
     public int compareTo(Category c) {
-        return compare(parseInt(id), parseInt(c.getId()));
+        return compare(id, c.getId());
+    }
+
+    public String toJson() {
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            return null;
+        }
     }
 }

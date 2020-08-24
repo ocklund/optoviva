@@ -1,8 +1,7 @@
 package com.ocklund.optoviva.resources;
 
 import com.ocklund.optoviva.api.Area;
-import com.ocklund.optoviva.api.Result;
-import com.ocklund.optoviva.db.InMemoryStorage;
+import com.ocklund.optoviva.db.JdbiStorage;
 import com.ocklund.optoviva.db.Storage;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import io.dropwizard.testing.junit5.ResourceExtension;
@@ -21,16 +20,17 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
 class AreaResourceTest {
-    private static final Storage storageMock = mock(InMemoryStorage.class);
+    private static final Storage storageMock = mock(JdbiStorage.class);
     private static final ResourceExtension resourceExtension = ResourceExtension.builder()
             .addResource(new AreaResource(storageMock))
             .build();
+    private final String areaJson = "{\"id\":null,\"name\":\"foo\",\"description\":\"bar\",\"locationId\":1}";
     private Area area;
 
     @BeforeEach
     void setup() {
         area = new Area();
-        area.setId("1");
+        area.setId(1L);
     }
 
     @AfterEach
@@ -40,19 +40,19 @@ class AreaResourceTest {
 
     @Test
     void shouldGetAreaById() {
-        when(storageMock.getArea("1")).thenReturn(Optional.of(area));
+        when(storageMock.getArea(1L)).thenReturn(Optional.of(area));
 
         Area result = resourceExtension.target("/area/1")
                 .request()
                 .get(Area.class);
 
         assertThat(result.getId(), is(area.getId()));
-        verify(storageMock).getArea("1");
+        verify(storageMock).getArea(1L);
     }
 
     @Test
     void shouldSearchArea() {
-        when(storageMock.getAreaByCategoryScore(anyString(), anyString(), anyInt())).thenReturn(Optional.of(area));
+        when(storageMock.getAreaByCategoryScore(anyLong(), anyLong(), anyInt())).thenReturn(Optional.of(area));
 
         Area result = resourceExtension.target("/area/search")
                 .queryParam("locationId", "1")
@@ -62,13 +62,12 @@ class AreaResourceTest {
                 .get(Area.class);
 
         assertThat(result.getId(), is(area.getId()));
-        verify(storageMock).getAreaByCategoryScore("1", "1", 1);
+        verify(storageMock).getAreaByCategoryScore(1L, 1L, 1);
     }
 
     @Test
     void shouldStoreArea() {
         when(storageMock.storeArea(any(Area.class))).thenReturn(area);
-        String areaJson = "{\"id\":null,\"name\":\"foo\",\"description\":\"bar\",\"locationId\":\"1\",\"created\":null,\"modified\":null,\"modifiedBy\":\"test\"}";
 
         Area result = resourceExtension.target("/area")
                 .request()
@@ -79,35 +78,18 @@ class AreaResourceTest {
     }
 
     @Test
-    void shouldGetAreaBestMatch() {
-        when(storageMock.getAreaBestMatch(any(Result.class))).thenReturn(Optional.of(area));
-        String resultJson =
-                "{" +
-                "   \"email\": \"jane.doe@example.com\"," +
-                "   \"locationId\": \"1\"," +
-                "   \"choices\": [{" +
-                "       \"categoryId\": \"1\"," +
-                "       \"score\": 1," +
-                "       \"areaId\": 2" +
-                "   }]" +
-                "}";
-
-        Area result = resourceExtension.target("/area/result")
-                .request()
-                .post(Entity.entity(resultJson, MediaType.APPLICATION_JSON_TYPE), Area.class);
-
-        assertThat(result.getId(), is(area.getId()));
-        verify(storageMock).getAreaBestMatch(any(Result.class));
-    }
-
-    @Test
     void shouldUpdateArea() {
-        String areaJson = "{\"id\":null,\"name\":\"foo\",\"description\":\"bar\",\"locationId\":\"1\",\"created\":null,\"modified\":null,\"modifiedBy\":\"test\"}";
-
         resourceExtension.target("/area")
                 .request()
                 .put(Entity.entity(areaJson, MediaType.APPLICATION_JSON_TYPE), Area.class);
 
         verify(storageMock).updateArea(any(Area.class));
+    }
+
+    @Test
+    void shouldDeleteArea() {
+        resourceExtension.target("/area/1").request().delete();
+
+        verify(storageMock).deleteArea(1L);
     }
 }

@@ -10,13 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Area {
-    private String id;
+    private Long id;
     private String name;
     private String description;
-    private String locationId;
-    private String created;
-    private String modified;
-    private String modifiedBy;
+    private Long locationId;
 
     public String toJson() {
         try {

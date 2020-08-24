@@ -3,13 +3,17 @@ package com.ocklund.optoviva.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.ocklund.optoviva.api.Category;
 import com.ocklund.optoviva.db.Storage;
+import lombok.extern.java.Log;
 
 import javax.ws.rs.*;
+import java.util.Optional;
 import java.util.Set;
 
+import static java.lang.String.format;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Log
 @Path("/category")
 public class CategoryResource {
 
@@ -23,9 +27,11 @@ public class CategoryResource {
     @Path("/{id}")
     @Produces(APPLICATION_JSON)
     @Timed
-    public Category getCategory(@PathParam("id") String id) {
-        if (storage.getCategory(id).isPresent()) {
-            return storage.getCategory(id).get();
+    public Category getCategory(@PathParam("id") Long id) {
+        log.info(format("id: %s", id));
+        Optional<Category> category = storage.getCategory(id);
+        if (category.isPresent()) {
+            return category.get();
         }
         throw new WebApplicationException(NOT_FOUND);
     }
@@ -41,7 +47,8 @@ public class CategoryResource {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Timed
-    public Category createCategory(Category category) {
+    public Category storeCategory(Category category) {
+        log.info(format("category: %s", category.toJson()));
         return storage.storeCategory(category);
     }
 
@@ -49,13 +56,15 @@ public class CategoryResource {
     @Consumes(APPLICATION_JSON)
     @Timed
     public void updateCategory(Category category) {
+        log.info(format("category: %s", category.toJson()));
         storage.updateCategory(category);
     }
 
     @DELETE
     @Path("/{id}")
     @Timed
-    public void deleteCategory(@PathParam("id") String id) {
+    public void deleteCategory(@PathParam("id") Long id) {
+        log.info(format("id: %s", id));
         storage.deleteCategory(id);
     }
 }

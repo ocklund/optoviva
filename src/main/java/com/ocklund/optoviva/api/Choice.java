@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Choice {
-    private String categoryId;
+    private Long categoryId;
     private Integer score;
-    private Integer areaId;
+    private Long areaId;
 }
