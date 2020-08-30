@@ -1,6 +1,6 @@
 # Optoviva
 
-Web app that allows a user to quickly find out which area in a city is the optimal place to live, based on the user's
+Web app that allows a user to quickly find out which area in a city is the optimal place to live in, based on the user's
 preferences.
 
 Tech used:
