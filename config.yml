@@ -5,10 +5,4 @@ server:
   adminContextPath: /admin
   connector:
     type: http
-    port: 8080 # Port overridden by Procfile.
-
-database:
-  driverClass: org.postgresql.Driver
-  user: optoviva
-  url: jdbc:postgresql://localhost:5432/optoviva
-  validationQuery: "/* Health Check */ SELECT 1"
+    port: 0 # Port overridden by Procfile.
