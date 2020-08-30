@@ -21,6 +21,7 @@ This web app is designed to run on Heroku. You can run it locally using the
 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) with a local Postgres database (macOS with Homebrew):
 - Install Maven, `brew install mvn`
 - Install local Postgres, `brew install postgres`
+- Create the local database and user with Postgres tools, `createdb optoviva;createuser optoviva -s`
 - Install Heroku CLI, `brew tap heroku/brew && brew install heroku`
 - Create a file named `.env` in the project root with the following contents:
 ```
