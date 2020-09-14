@@ -18,7 +18,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>2.0.13</dropwizard.version>
         <mainClass>com.ocklund.optoviva.OptovivaApplication</mainClass>
-        <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
     </properties>
 
     <dependencyManagement>
