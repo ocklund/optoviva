@@ -27,9 +27,9 @@ window.addEventListener('load', function (event) {
 
   function getMatch(id) {
     var locationId = document.getElementById('location').value;
-    var score = document.getElementById('slider-' + id).value;
+    //var score = document.getElementById('slider-' + id).value;
     var url = '/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
-    //var url = 'http://localhost:9090/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
+    var url = 'http://localhost:9090/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -60,13 +60,14 @@ window.addEventListener('load', function (event) {
         data.forEach(cat => {
           categoriesHtml +=
             '<div class="row">' +
-            '<div class="column column-20"><p>' + cat.name + '</p></div>' +
-            '<div id="container-slider-' + cat.id + '" class="column-40 container-slider">' +
-            '<input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider">' +
+              '<div class="column column-30"><strong>' + cat.name + ': </strong></div>' +
+              '<div id="slider-' + cat.id + '-output" class="column column-30 output"></div>' +
+              '<div class="column column-30">&nbsp;</div>' +
             '</div>' +
-            '<div class="column column-20">' +
-            '<div id="slider-' + cat.id + '-output" class="column output"></div>' +
-            '</div>' +
+            '<div class="row">' +
+                '<div id="container-slider-' + cat.id + '" class="column container-slider">' +
+                  '<input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider">' +
+                '</div>' +
             '</div>';
         });
         document.getElementById('categories').innerHTML = categoriesHtml;
