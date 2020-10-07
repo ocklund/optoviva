@@ -28,8 +28,8 @@ window.addEventListener('load', function (event) {
   function getMatch(id) {
     var locationId = document.getElementById('location').value;
     var score = document.getElementById('slider-' + id).value;
-    //var url = '/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
-    var url = 'http://localhost:9090/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
+    var url = '/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
+    //var url = 'http://localhost:9090/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -45,8 +45,8 @@ window.addEventListener('load', function (event) {
   }
 
   function getCategories() {
-    //var url = '/api/category';
-    var url = 'http://localhost:9090/api/category';
+    var url = '/api/category';
+    //var url = 'http://localhost:9090/api/category';
     fetch(url)
       .then(response => {
         if (response.ok) {
