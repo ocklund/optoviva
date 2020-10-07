@@ -1,4 +1,11 @@
 window.addEventListener('load', function (event) {
+  const params = (new URL(document.location)).searchParams;
+  const isDev = params.get('dev');
+  var host = '';
+  if (isDev) {
+    host = 'http://localhost:9090';
+  }
+
   function getBestMatch() {
     var outputs = document.getElementsByClassName('output');
     var names = [];
@@ -28,8 +35,7 @@ window.addEventListener('load', function (event) {
   function getMatch(id) {
     var locationId = document.getElementById('location').value;
     var score = document.getElementById('slider-' + id).value;
-    var url = '/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
-    //var url = 'http://localhost:9090/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
+    var url = host + '/api/area/search?locationId=' + locationId + '&categoryId=' + id + '&score=' + score;
     fetch(url)
       .then(response => {
         if (response.ok) {
@@ -44,9 +50,33 @@ window.addEventListener('load', function (event) {
       })
   }
 
+  function getLocations() {
+    var url = host + '/api/location';
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          return [];
+        }
+      })
+      .then(data => {
+        var locationsHtml = 
+          '<div class="row"><div class="column"><select id="location">';
+        data.forEach(loc =>{
+          var selected = loc.id === 1 ? ' selected="selected"' : '';
+          locationsHtml +=
+                '<option value="' + loc.id + '"' + selected + '>' + loc.name + '</option>'
+        });
+        locationsHtml +=
+          '</select></div></div>';
+        document.getElementById('location-choice').innerHTML = locationsHtml;
+      });
+  }
+  getLocations();
+
   function getCategories() {
-    var url = '/api/category';
-    //var url = 'http://localhost:9090/api/category';
+    var url = host + '/api/category';
     fetch(url)
       .then(response => {
         if (response.ok) {
