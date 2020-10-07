@@ -16,7 +16,12 @@ import io.dropwizard.jdbi3.bundles.JdbiExceptionsBundle;
 import io.dropwizard.migrations.MigrationsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.jdbi.v3.core.Jdbi;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
+import java.util.EnumSet;
 
 public class OptovivaApplication extends Application<OptovivaConfiguration> {
 
@@ -44,6 +49,7 @@ public class OptovivaApplication extends Application<OptovivaConfiguration> {
 
     @Override
     public void run(final OptovivaConfiguration configuration, final Environment environment) {
+        setCors(environment);
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "jdbi");
         final Storage storage = new JdbiStorage(jdbi);
@@ -52,5 +58,13 @@ public class OptovivaApplication extends Application<OptovivaConfiguration> {
         environment.jersey().register(new ScoreResource(storage));
         environment.jersey().register(new LocationResource(storage));
         environment.healthChecks().register("storage", new StorageHealthCheck(storage));
+    }
+
+    private void setCors(final Environment environment) {
+        final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+        cors.setInitParameter("allowedOrigins", "*");
+        cors.setInitParameter("allowedHeaders", "Cache-Control,If-Modified-Since,Pragma,Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
+        cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,");
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
     }
 }
