@@ -60,9 +60,10 @@ window.addEventListener('load', function (event) {
         data.forEach(cat => {
           categoriesHtml +=
             '<div class="row">' +
-              '<div class="column column-30 bold">' + cat.name + '</div>' +
-              '<div id="slider-' + cat.id + '-output" class="column column-30 output"></div>' +
-              '<div class="column column-30">&nbsp;</div>' +
+              '<div class="column">' +
+                '<span class="bold">' + cat.name + '</span>: ' +
+                '<span id="slider-' + cat.id + '-output" class="output"></span>' +
+              '</div>' +
             '</div>' +
             '<div class="row">' +
                 '<div id="container-slider-' + cat.id + '" class="column container-slider">' +
