@@ -1,3 +1,12 @@
+function on(clickedValue) {
+  document.getElementById("overlay-id").innerHTML = clickedValue;
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
 window.addEventListener('load', function (event) {
   const params = (new URL(document.location)).searchParams;
   const isDev = params.get('dev');
@@ -45,7 +54,9 @@ window.addEventListener('load', function (event) {
         }
       })
       .then(data => {
-        document.getElementById('slider-' + id + '-output').innerHTML = data.name;
+        var areaOutput = data.name ? '<span onclick="on(\'' + data.name + '<br/>' + data.description + '\')">' + data.name +
+        '<img src="images/info.png" with="18" height="18"/></span>' : '';
+        document.getElementById('slider-' + id + '-output').innerHTML = areaOutput;
         getBestMatch();
       })
   }
@@ -61,12 +72,12 @@ window.addEventListener('load', function (event) {
         }
       })
       .then(data => {
-        var locationsHtml = 
+        var locationsHtml =
           '<div class="row"><div class="column"><select id="location">';
-        data.forEach(loc =>{
+        data.forEach(loc => {
           var selected = loc.id === 1 ? ' selected="selected"' : '';
           locationsHtml +=
-                '<option value="' + loc.id + '"' + selected + '>' + loc.name + '</option>'
+            '<option value="' + loc.id + '"' + selected + '>' + loc.name + '</option>'
         });
         locationsHtml +=
           '</select></div></div>';
@@ -90,15 +101,18 @@ window.addEventListener('load', function (event) {
         data.forEach(cat => {
           categoriesHtml +=
             '<div class="row">' +
-              '<div class="column">' +
-                '<span class="bold">' + cat.name + '</span>: ' +
-                '<span id="slider-' + cat.id + '-output" class="output"></span>' +
-              '</div>' +
+            '  <div class="column column-20">' +
+            '    <div class="bold category-label" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name +
+            '<img src="images/info.png" with="18" height="18"/></div>' +
+            '</div>' +
+            '  <div class="column column-80">' +
+            '    <div class="output" id="slider-' + cat.id + '-output"></div>' +
+            '  </div>' +
             '</div>' +
             '<div class="row">' +
-                '<div id="container-slider-' + cat.id + '" class="column container-slider">' +
-                  '<input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider"/>' +
-                '</div>' +
+            '  <div  class="column container-slider" id="container-slider-' + cat.id + '">' +
+            '    <input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider"/>' +
+            '  </div>' +
             '</div>';
         });
         document.getElementById('categories').innerHTML = categoriesHtml;
@@ -111,7 +125,6 @@ window.addEventListener('load', function (event) {
             getMatch(id);
           });
         }
-
       })
   }
   getCategories();
