@@ -101,11 +101,11 @@ window.addEventListener('load', function (event) {
         data.forEach(cat => {
           categoriesHtml +=
             '<div class="row">' +
-            '  <div class="column column-20">' +
+            '  <div class="column column-33">' +
             '    <div class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name +
             '<img src="images/info.png" with="18" height="18"/></div>' +
             '</div>' +
-            '  <div class="column column-80">' +
+            '  <div class="column column-66">' +
             '    <div class="output" id="slider-' + cat.id + '-output"></div>' +
             '  </div>' +
             '</div>' +
