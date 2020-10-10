@@ -20,7 +20,7 @@ window.addEventListener('load', function (event) {
     var names = [];
     for (var i = 0; i < outputs.length; i++) {
       if (outputs[i].innerText.trim() != '') {
-        names[i] = outputs[i].innerText;
+        names[i] = outputs[i].innerText.replace(': ', '');
       }
     }
 
@@ -36,7 +36,7 @@ window.addEventListener('load', function (event) {
 
     var bestMatch = '<p>&nbsp;</p>';
     if (names.length > 0) {
-      bestMatch = '<p>Best match: <strong>' + mostFrequent(names).join(', ') + '</strong></p>';
+      bestMatch = '<p>Best match : <strong>' + mostFrequent(names).join(', ') + '</strong></p>';
     }
     document.getElementById('best-match').innerHTML = bestMatch;
   }
@@ -54,7 +54,7 @@ window.addEventListener('load', function (event) {
         }
       })
       .then(data => {
-        var areaOutput = data.name ? '<span class="clickable" onclick="on(\'' + data.name + '<br/>' + data.description + '\')">' + data.name + '</span>' : '';
+        var areaOutput = data.name ? ': <span class="clickable" onclick="on(\'' + data.name + '<br/>' + data.description + '\')">' + data.name + '</span>' : '';
         document.getElementById('slider-' + id + '-output').innerHTML = areaOutput;
         getBestMatch();
       })
@@ -99,10 +99,8 @@ window.addEventListener('load', function (event) {
           categoriesHtml +=
             '<div class="row">' +
             '  <div class="column">' +
-            '    <div class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name + '</div>' +
-            '  </div>' +
-            '  <div class="column">' +
-            '    <div class="output" id="slider-' + cat.id + '-output"></div>' +
+            '    <span class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name + '</span>' +
+            '    <span class="output" id="slider-' + cat.id + '-output"></span>' +
             '  </div>' +
             '</div>' +
             '<div class="row">' +
