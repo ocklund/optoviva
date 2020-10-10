@@ -48,8 +48,8 @@
       padding: 20px;
     }
 
-    .copyright {
-      font-size: 1.2rem;
+    .smaller-text {
+      font-size: 1.5rem;
     }
 
     .bold {
@@ -73,7 +73,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 1);
+      background-color: lightgrey;
       z-index: 2;
       cursor: pointer;
     }
@@ -83,7 +83,7 @@
       top: 50%;
       left: 50%;
       font-size: 2rem;
-      color: white;
+      color: black;
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
     }
@@ -93,25 +93,36 @@
 
 <body>
   <h1 class="center">Optoviva</h1>
-  <div id="location-choice" class="container"></div>
-  <div class="row">
-    <div id="best-match" class="column center">
-      <p>Move sliders to get best match</p>
+  <div id="container" class="container">
+    <div class="row">
+      <div class="column" id="location-choice"></div>
+      <div class="column">
+        <button class="button button-outline"
+          onclick="on('<p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p class=smaller-text><br/>To go back, just click anywhere on this page.</p>')">Help</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column" id="best-match">
+        <p>Move sliders to get best match</p>
+      </div>
+    </div>
+    <div class="row">
+      <div id="categories" class="column"></div>
+    </div>
+    <div class="row">
+      <div class="column"><p>&nbsp;</p></div>
+    </div>
+    <div class="row">
+      <div class="column center smaller-text">&copy; 2020 Talento Media</div>
     </div>
   </div>
-  <div id="categories" class="container"></div>
-  <div class="row">
-    <div class="column">&nbsp;</div>
-  </div>
+
   <div id="overlay" class="overlay" onclick="off()">
     <div class="overlay-text">
-      <div class="float-right close-x">X</div>
+      <div class="float-right close-x">(X)</div>
       <div class="clearfix"></div>
       <div id="overlay-id"></div>
     </div>
-  </div>
-  <div class="row">
-    <div class="column center copyright">&copy; 2020 Talento Media</div>
   </div>
 </body>
 

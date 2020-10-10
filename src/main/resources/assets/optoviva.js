@@ -54,8 +54,7 @@ window.addEventListener('load', function (event) {
         }
       })
       .then(data => {
-        var areaOutput = data.name ? '<span class="clickable" onclick="on(\'' + data.name + '<br/>' + data.description + '\')">' + data.name +
-        '<img src="images/info.png" with="18" height="18"/></span>' : '';
+        var areaOutput = data.name ? '<span class="clickable" onclick="on(\'' + data.name + '<br/>' + data.description + '\')">' + data.name + '</span>' : '';
         document.getElementById('slider-' + id + '-output').innerHTML = areaOutput;
         getBestMatch();
       })
@@ -72,15 +71,13 @@ window.addEventListener('load', function (event) {
         }
       })
       .then(data => {
-        var locationsHtml =
-          '<div class="row"><div class="column"><select id="location">';
+        var locationsHtml = '<select id="location">';
         data.forEach(loc => {
           var selected = loc.id === 1 ? ' selected="selected"' : '';
           locationsHtml +=
             '<option value="' + loc.id + '"' + selected + '>' + loc.name + '</option>'
         });
-        locationsHtml +=
-          '</select></div></div>';
+        locationsHtml += '</select>';
         document.getElementById('location-choice').innerHTML = locationsHtml;
       });
   }
@@ -102,9 +99,8 @@ window.addEventListener('load', function (event) {
           categoriesHtml +=
             '<div class="row">' +
             '  <div class="column column-33">' +
-            '    <div class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name +
-            '<img src="images/info.png" with="18" height="18"/></div>' +
-            '</div>' +
+            '    <div class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name + '</div>' +
+            '  </div>' +
             '  <div class="column column-66">' +
             '    <div class="output" id="slider-' + cat.id + '-output"></div>' +
             '  </div>' +
