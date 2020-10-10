@@ -45,11 +45,6 @@
 
     .center {
       text-align: center;
-      padding: 20px;
-    }
-
-    .smaller-text {
-      font-size: 1.5rem;
     }
 
     .bold {
@@ -87,6 +82,10 @@
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
     }
+
+    .help-text {
+      font-size: 1.5rem;
+    }
   </style>
   <script src="optoviva.js"></script>
 </head>
@@ -98,7 +97,7 @@
       <div class="column" id="location-choice"></div>
       <div class="column">
         <button class="button button-outline"
-          onclick="on('<p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p class=smaller-text><br/>To go back, just click anywhere on this page.</p>')">Help</button>
+          onclick="on('<span class=help-text><p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p>To go back, just click anywhere on this page.</p></span>')">Help</button>
       </div>
     </div>
     <div class="row">
@@ -113,7 +112,7 @@
       <div class="column"><p>&nbsp;</p></div>
     </div>
     <div class="row">
-      <div class="column center smaller-text">&copy; 2020 Talento Media</div>
+      <div class="column center">&copy; 2020 Talento Media</div>
     </div>
   </div>
 
