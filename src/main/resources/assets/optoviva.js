@@ -99,7 +99,7 @@ window.addEventListener('load', function (event) {
           categoriesHtml +=
             '<div class="row">' +
             '  <div class="column">' +
-            '    <span class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">&nbsp;&nbsp;&nbsp;' + cat.name + '</span>' +
+            '    <span class="bold clickable" onclick="on(\'' + cat.name + '<br/>' + cat.description + '\')">&nbsp;&nbsp;&nbsp;' + cat.name + '</span>' +
             '    <span class="output" id="slider-' + cat.id + '-output"></span>' +
             '  </div>' +
             '</div>' +
