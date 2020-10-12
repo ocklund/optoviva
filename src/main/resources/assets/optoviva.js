@@ -99,13 +99,13 @@ window.addEventListener('load', function (event) {
           categoriesHtml +=
             '<div class="row">' +
             '  <div class="column">' +
-            '    <span class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">' + cat.name + '</span>' +
+            '    <span class="bold clickable" onclick="on(\'' + cat.name + ': ' + cat.description + '\')">&nbsp;&nbsp;&nbsp;' + cat.name + '</span>' +
             '    <span class="output" id="slider-' + cat.id + '-output"></span>' +
             '  </div>' +
             '</div>' +
             '<div class="row">' +
             '  <div class="column container-slider" id="container-slider-' + cat.id + '">' +
-            '    <input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider"/>' +
+            '    &minus; <input id="slider-' + cat.id + '" type="range" min="1" max="5" value="3" class="slider"/> &plus;' +
             '  </div>' +
             '</div>';
         });

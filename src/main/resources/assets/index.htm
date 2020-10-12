@@ -17,7 +17,7 @@
 
     .slider {
       -webkit-appearance: none;
-      width: 100%;
+      width: 90%;
       height: 15px;
       border-radius: 5px;
       background: #ccc;
@@ -70,7 +70,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: lightgrey;
+      background-color: white;
+      opacity: 1;
       z-index: 2;
       cursor: pointer;
     }
@@ -80,7 +81,6 @@
       top: 50%;
       left: 50%;
       font-size: 1.5rem;
-      color: black;
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
     }
@@ -93,9 +93,12 @@
   <div id="container" class="container">
     <div class="row">
       <div class="column" id="location-choice"></div>
-      <div class="column">
-        <button class="float-right button button-outline"
-          onclick="on('<p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p>To go back, just click anywhere on this page.</p>')">Help</button>
+      <div class="column center">
+        <button class="button button-outline"
+          onclick="on('<p>Optoviva helps you find the area in a chosen city that matches your preferences.</p>' +
+          '<p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p>' +
+          '<p>If you want to find out more about a category or an area, just click the name of it.</p>' +
+          '<p>To go back, just click anywhere on this page.</p>')">Help</button>
       </div>
     </div>
     <div class="row">
