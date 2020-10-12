@@ -39,28 +39,29 @@ insert into category values (4, 'Green areas', 'How close to green areas, parks,
 insert into category values (5, 'Nightlife', 'How many restaurants, bars, clubs, theaters, shows');
 insert into category values (6, 'Sea view', 'How close to the water, beach');
 
+-- Note: Citation characters (', ") not allowed in description field.
 -- https://en.wikipedia.org/wiki/Danderyd_Municipality
-insert into area values (1, 'Danderyd', 'Affluent municipality north of Stockholm', 1);
+insert into area values (1, 'Danderyd', 'Affluent municipality north of Stockholm<br/><br/><a href=https://en.wikipedia.org/wiki/Danderyd_Municipality>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Ekerö_Municipality
-insert into area values (2, 'Ekerö', 'Rural municipality of islands east of Stockholm. Summer home of the royal family', 1);
+insert into area values (2, 'Ekerö', 'Rural municipality of islands east of Stockholm. Summer home of the royal family<br/><br/><a href=https://en.wikipedia.org/wiki/Ekerö_Municipality>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Gamla_stan
-insert into area values (3, 'Gamla Stan', 'The old town central area of Stockholm', 1);
+insert into area values (3, 'Gamla Stan', 'The old town central area of Stockholm<br/><br/><a href=https://en.wikipedia.org/wiki/Gamla_stan>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Hammarby_Sjöstad
-insert into area values (4, 'Hammarby Sjöstad', 'Newly developed district of central Stockholm. Middle to high income', 1);
+insert into area values (4, 'Hammarby Sjöstad', 'Newly developed district of central Stockholm. Middle to high income<br/><br/><a href=https://en.wikipedia.org/wiki/Hammarby_Sjöstad>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Kungsholmen
-insert into area values (5, 'Kungsholmen', 'Classic middle to high income area in central Stockholm', 1);
+insert into area values (5, 'Kungsholmen', 'Classic middle to high income area in central Stockholm<br/><br/><a href=https://en.wikipedia.org/wiki/Kungsholmen>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Lidingö
-insert into area values (6, 'Lidingö', 'Island municipality north of Stockholm. Third wealthiest after Danderyd and Täby', 1);
+insert into area values (6, 'Lidingö', 'Island municipality north of Stockholm. Third wealthiest after Danderyd and Täby<br/><br/><a href=https://en.wikipedia.org/wiki/Lidingö>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Nacka_Municipality
-insert into area values (7, 'Nacka', 'Coastal municipality west of Stockholm. Area with high income and eduation', 1);
+insert into area values (7, 'Nacka', 'Coastal municipality west of Stockholm. Area with high income and eduation<br/><br/><a href=https://en.wikipedia.org/wiki/Nacka_Municipality>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Norrmalm
-insert into area values (8, 'Norrmalm', 'Exclusive city district of Stockholm. Mostly shopping and office buildings', 1);
+insert into area values (8, 'Norrmalm', 'Exclusive city district of Stockholm. Mostly shopping and office buildings<br/><br/><a href=https://en.wikipedia.org/wiki/Norrmalm>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Södermalm
-insert into area values (9, 'Södermalm', 'Island city district of southern Stockholm. Famously "bohemian", but now gentrified', 1);
+insert into area values (9, 'Södermalm', 'Island city district of southern Stockholm. Famously bohemian, but now gentrified<br/><br/><a href=https://en.wikipedia.org/wiki/Södermalm>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Täby_Municipality
-insert into area values (10, 'Täby', 'Wealthy municipality, second after Danderyd. Suburb in the north of Stockholm', 1);
+insert into area values (10, 'Täby', 'Wealthy municipality, second after Danderyd. Suburb in the north of Stockholm<br/><br/><a href=https://en.wikipedia.org/wiki/Täby_Municipality>More &raquo;</a>', 1);
 -- https://en.wikipedia.org/wiki/Östermalm
-insert into area values (11, 'Östermalm', 'Exclusive central Stockholm city district. Highest housing prices in Sweden', 1);
+insert into area values (11, 'Östermalm', 'Exclusive central Stockholm city district. Highest housing prices in Sweden<br/><br/><a href=https://en.wikipedia.org/wiki/Östermalm>More &raquo;</a>', 1);
 
 -- Categories (score 1-5):
 -- 1. Communication - How close to buses, trains, metro

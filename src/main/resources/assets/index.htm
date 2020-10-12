@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base target="_blank">
   <title>Optoviva</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
@@ -78,14 +79,10 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: black;
       transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-    }
-
-    .help-text {
-      font-size: 1.5rem;
     }
   </style>
   <script src="optoviva.js"></script>
@@ -98,7 +95,7 @@
       <div class="column" id="location-choice"></div>
       <div class="column">
         <button class="float-right button button-outline"
-          onclick="on('<span class=help-text><p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p>To go back, just click anywhere on this page.</p></span>')">Help</button>
+          onclick="on('<p>Optoviva helps you find the area in a chosen city that matches your preferences.</p><p>Move the sliders to indicate that you prefer more or less of some category. For example, if you think sea view is very important, move the slider for that category all the way to the right.</p><p>If you want to find out more about a category or an area, just click the name of it.</p><p>To go back, just click anywhere on this page.</p>')">Help</button>
       </div>
     </div>
     <div class="row">
@@ -119,7 +116,7 @@
 
   <div id="overlay" class="overlay" onclick="off()">
     <div class="overlay-text">
-      <div class="float-right close-x">(X)</div>
+      <div class="float-right close-x">&xotime;</div>
       <div class="clearfix"></div>
       <div id="overlay-id"></div>
     </div>
