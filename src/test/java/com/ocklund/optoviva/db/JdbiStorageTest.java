@@ -5,7 +5,6 @@ import com.ocklund.optoviva.api.Category;
 import com.ocklund.optoviva.api.Location;
 import com.ocklund.optoviva.api.Score;
 import io.dropwizard.util.Resources;
-import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.junit.jupiter.api.BeforeAll;

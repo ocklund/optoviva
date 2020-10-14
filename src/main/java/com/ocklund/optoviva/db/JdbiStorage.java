@@ -151,8 +151,7 @@ public class JdbiStorage implements Storage {
     public boolean isOperational() {
         final LocationDao locationDao = jdbi.onDemand(LocationDao.class);
         try {
-            locationDao.testConnection();
-            return true;
+            return locationDao.testConnection() > 0;
         } catch (Exception e) {
             return false;
         }

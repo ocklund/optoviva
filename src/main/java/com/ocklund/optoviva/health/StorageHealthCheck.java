@@ -11,7 +11,7 @@ public class StorageHealthCheck extends HealthCheck {
     }
 
     @Override
-    protected Result check() throws Exception {
+    protected Result check() {
         if (storage.isOperational()) {
             return Result.healthy();
         } else {
