@@ -20,6 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static com.github.stefanbirkner.systemlambda.SystemLambda.*;
 
 @Log
 class LoadDataCommandTest {
@@ -47,13 +48,14 @@ class LoadDataCommandTest {
     }
 
     @Test
-    void shouldLoadData() throws Throwable {
+    void shouldLoadData() throws Exception {
         String path = "src/test/resources/";
-        Optional<Throwable> result = cli.run("load", "-d", path + "data.sql", path + "config-test.yml");
-        if (result.isPresent()) {
-            throw result.get();
-        }
-        assertThat(stdOut.toString(UTF_8.name()), containsString("Successfully loaded data"));
-        assertThat(stdErr.toString(UTF_8.name()), is(""));
+        withEnvironmentVariable("DATABASE_URL", "jdbc:h2:./target/testdb").execute(() -> {
+            Optional<Throwable> error = cli.run("load", "-d", path + "data.sql", "config.yml");
+
+            assertThat(error.isPresent(), is(false));
+            assertThat(stdOut.toString(UTF_8.name()), containsString("Successfully loaded data"));
+            assertThat(stdErr.toString(UTF_8.name()), is(""));
+        });
     }
 }

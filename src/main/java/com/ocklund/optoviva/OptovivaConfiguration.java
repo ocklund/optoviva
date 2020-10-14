@@ -29,14 +29,20 @@ public class OptovivaConfiguration extends Configuration {
         } catch (URISyntaxException e) {
             throw new IllegalArgumentException("DATABASE_URL environment variable must be a valid URI", e);
         }
-        String user = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
         DataSourceFactory dataSourceFactory = new DataSourceFactory();
-        dataSourceFactory.setUser(user);
-        dataSourceFactory.setPassword(password);
-        dataSourceFactory.setUrl(url);
-        dataSourceFactory.setDriverClass("org.postgresql.Driver");
+        if (databaseUrl.startsWith("jdbc:h2:")) {
+            dataSourceFactory.setUser("optoviva");
+            dataSourceFactory.setUrl(databaseUrl);
+            dataSourceFactory.setDriverClass("org.h2.Driver");
+        } else {
+            String user = dbUri.getUserInfo().split(":")[0];
+            String password = dbUri.getUserInfo().split(":")[1];
+            String url = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+            dataSourceFactory.setUser(user);
+            dataSourceFactory.setPassword(password);
+            dataSourceFactory.setUrl(url);
+            dataSourceFactory.setDriverClass("org.postgresql.Driver");
+        }
         return dataSourceFactory;
     }
 }
