@@ -3,15 +3,15 @@ package com.ocklund.optoviva.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.ocklund.optoviva.api.Category;
 import com.ocklund.optoviva.db.Storage;
+import jakarta.ws.rs.*;
 import lombok.extern.java.Log;
 
-import javax.ws.rs.*;
 import java.util.Optional;
 import java.util.Set;
 
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
+import static jakarta.ws.rs.core.Response.Status.NOT_FOUND;
 import static java.lang.String.format;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 @Log
 @Path("/category")

@@ -16,11 +16,11 @@ import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.jdbi3.bundles.JdbiExceptionsBundle;
 import io.dropwizard.migrations.MigrationsBundle;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.FilterRegistration;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.jdbi.v3.core.Jdbi;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
 import java.util.EnumSet;
 
 public class OptovivaApplication extends Application<OptovivaConfiguration> {

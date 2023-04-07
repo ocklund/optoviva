@@ -3,13 +3,13 @@ package com.ocklund.optoviva.resources;
 import com.codahale.metrics.annotation.Timed;
 import com.ocklund.optoviva.api.Location;
 import com.ocklund.optoviva.db.Storage;
+import jakarta.ws.rs.*;
 import lombok.extern.java.Log;
 
-import javax.ws.rs.*;
 import java.util.Set;
 
+import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static java.lang.String.format;
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Log
 @Path("/location")
