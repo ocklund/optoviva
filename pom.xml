@@ -18,7 +18,7 @@
         <maven.compiler.release>11</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <dropwizard.version>2.1.6</dropwizard.version>
+        <dropwizard.version>3.0.0</dropwizard.version>
         <mainClass>com.ocklund.optoviva.OptovivaApplication</mainClass>
         <junit.jupiter.version>5.9.2</junit.jupiter.version>
     </properties>

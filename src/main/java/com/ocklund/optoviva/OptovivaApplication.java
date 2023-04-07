@@ -8,14 +8,14 @@ import com.ocklund.optoviva.resources.AreaResource;
 import com.ocklund.optoviva.resources.CategoryResource;
 import com.ocklund.optoviva.resources.LocationResource;
 import com.ocklund.optoviva.resources.ScoreResource;
-import io.dropwizard.Application;
+import io.dropwizard.core.Application;
 import io.dropwizard.assets.AssetsBundle;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.jdbi3.bundles.JdbiExceptionsBundle;
 import io.dropwizard.migrations.MigrationsBundle;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.jdbi.v3.core.Jdbi;
 

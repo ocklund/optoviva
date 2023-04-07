@@ -2,8 +2,8 @@ package com.ocklund.optoviva.cli;
 
 import com.ocklund.optoviva.OptovivaApplication;
 import com.ocklund.optoviva.OptovivaConfiguration;
-import io.dropwizard.cli.Cli;
-import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.core.cli.Cli;
+import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.util.JarLocation;
 import lombok.extern.java.Log;
 import org.junit.jupiter.api.AfterEach;
@@ -54,8 +54,8 @@ class LoadDataCommandTest {
             Optional<Throwable> error = cli.run("load", "-d", path + "data.sql", "config.yml");
 
             assertThat(error.isPresent(), is(false));
-            assertThat(stdOut.toString(UTF_8.name()), containsString("Successfully loaded data"));
-            assertThat(stdErr.toString(UTF_8.name()), is(""));
+            assertThat(stdOut.toString(UTF_8), containsString("Successfully loaded data"));
+            assertThat(stdErr.toString(UTF_8), is(""));
         });
     }
 }

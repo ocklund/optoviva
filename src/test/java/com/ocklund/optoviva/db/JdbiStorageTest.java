@@ -4,7 +4,6 @@ import com.ocklund.optoviva.api.Area;
 import com.ocklund.optoviva.api.Category;
 import com.ocklund.optoviva.api.Location;
 import com.ocklund.optoviva.api.Score;
-import io.dropwizard.util.Resources;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +12,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Optional;
 import java.util.Set;
 
@@ -27,12 +28,12 @@ class JdbiStorageTest {
     private static JdbiStorage jdbiStorage;
 
     @BeforeAll
-    static void setUp() throws IOException {
+    static void setUp() throws IOException, URISyntaxException {
         File dbFile = new File(tempDir, "testdb");
         Jdbi jdbi = Jdbi.create("jdbc:h2:" + dbFile.getAbsolutePath(), "optoviva", "");
         jdbi.installPlugin(new SqlObjectPlugin());
         jdbiStorage = new JdbiStorage(jdbi);
-        jdbiStorage.loadData(Resources.toString(getResource("data.sql"), StandardCharsets.UTF_8));
+        jdbiStorage.loadData(Files.readString(Path.of(getResource("data.sql").toURI())));
     }
 
     @Test
