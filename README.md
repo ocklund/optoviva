@@ -4,9 +4,9 @@ Web app that allows a user to quickly find out which area in a city is the optim
 preferences.
 
 Tech used:
-- Java 8+, JavaScript, HTML, CSS
-- Dropwizard 2.x
-- Postgres 12.x
+- Java 11+, JavaScript, HTML, CSS
+- Dropwizard 4.x
+- Postgres 14.x
 - Heroku
 
 # How to build
@@ -57,5 +57,3 @@ curl localhost:9090/api/location
   }
 ]
 ```
-
-
