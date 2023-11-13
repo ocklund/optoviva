@@ -193,7 +193,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.2.2</version>
                 <!-- Allow system-lambda to use pre-17 loophole (used by LoadDataCommandTest.java).
                      See https://github.com/stefanbirkner/system-lambda/issues/23 -->
                 <configuration>
